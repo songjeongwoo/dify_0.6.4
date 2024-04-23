@@ -342,6 +342,14 @@ class Config:
         self.KEYWORD_DATA_SOURCE_TYPE = get_env('KEYWORD_DATA_SOURCE_TYPE')
         self.ENTERPRISE_ENABLED = get_bool_env('ENTERPRISE_ENABLED')
 
+        print("===== Starting to print Config values =====")
+        all_attr = dir(self)
+        for attr in all_attr:
+            if not attr.startswith('__') and not callable(getattr(self, attr)):
+                print(f"{attr}: {getattr(self, attr)}")
+        print("===== Finished to print Config values. =====")
+
+
 
 class CloudEditionConfig(Config):
 
